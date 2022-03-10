@@ -1,9 +1,12 @@
-import AvailableInformation from './components/information'
-import './App.css';
+import AvailableInformation from "./components/information";
+import Header from "./components/header";
 
 function App() {
   return (
-   <AvailableInformation/>
+    <div>
+      <Header />
+      <AvailableInformation />
+    </div>
   );
 }
 

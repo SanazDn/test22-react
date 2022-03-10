@@ -8,37 +8,38 @@ const InfoItem = (props) => {
     setActive(!isActive);
   };
 
-  const pdfCaption = (downloadPdf) => {
-    if (downloadPdf === true) {
-      return "Print PDF(CRA Version)";
-    }
-    return;
-  };
 
   return (
-    // <div class="d-flex  flex-hover bd-highlight mb-1 border p-3 mb-2 bg-light text-dark " >
     <div className={classes.flex}>
-      <div
-        class="p-2 flex-fill bd-highlight"
-        className={isActive ? classes.checked : classes.unchecked}
-      ></div>
-      <div class="p-2 flex-fill bd-highlight">
+      <div className={isActive ? classes.checked : classes.unchecked}></div>
+      <div className={classes.description}>
         <h6>{props.type}</h6>
         {props.message}
-        <br className={classes.print} />
-        {pdfCaption(props.downloadPdf)}
-        <br />
+        <div>
+          {props.downloadPdf && (
+            <div className={classes.print}>
+              <img className={classes.printer} />
+              Print PDF(CRA version)
+              <img className={classes.printer} />
+              {props.type}XLM
+            </div>
+          )}
+        </div>
         {props.submittedOn}
       </div>
-      <div class="p-2  bd-highlight">
-        <button
-          class={classes.button}
-          //for="btn-check-2"
-          //text-align="right"
-          onClick={onReviewClick}
-        >
-          Review {props.type}
-        </button>
+      <div>
+        <div className="btn-group-justified">
+          <div className="btn-group">
+            <button
+              type="button"
+              class="btn btn-outline-primary col-3 sm"
+              size="sm"
+              onClick={onReviewClick}
+            >
+              Review {props.type}
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
